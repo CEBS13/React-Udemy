@@ -6,7 +6,7 @@ const is used for variables that does not changes.
 
 ## Example
 
-    javascript
+```javascript
     var Myname = "cesar";
     console.log(Myname);
 => "cesar"
