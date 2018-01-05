@@ -44,7 +44,7 @@ class App extends Component {
     this.setState( {persons :persons});
 }
 
-showPersonHandler = () =>{
+showPersonHandler = () => {
   const doesShow = this.state.showPersons;
   this.setState({showPersons: !doesShow});
 
@@ -59,7 +59,8 @@ this.setState({persons: persons})
   render() {
 
     const style = {
-      backgroundColor: 'White',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'Inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -80,12 +81,22 @@ this.setState({persons: persons})
           })}
         </div>
       );
+
+      style.backgroundColor = 'red';
     }
 
+    const classes = [];
+    if(this.state.persons.length <= 2){
+      classes.push('red');
+    }
+    if(this.state.persons.length <= 1){
+      classes.push('bold');
+    }
     return (
 
       <div className="App">
         <h1> Hi i am a react app </h1>
+        <p className ={classes.join(' ')} > this is relly working </p>
         <button style={style} onClick = { this.showPersonHandler}> Switch name </button>
         {persons}
       </div>
