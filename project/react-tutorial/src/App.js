@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Radium ,{StyleRoot} from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -58,15 +59,10 @@ this.setState({persons: persons})
 
   render() {
 
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'Inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer' };
+
 
     let persons = null;
+    let btnClass ='';
 
     if (this.state.showPersons){
       persons = (
@@ -82,10 +78,12 @@ this.setState({persons: persons})
         </div>
       );
 
-      style.backgroundColor = 'red';
+btnClass = classes.Red;
+
     }
 
     const classes = [];
+
     if(this.state.persons.length <= 2){
       classes.push('red');
     }
@@ -93,15 +91,16 @@ this.setState({persons: persons})
       classes.push('bold');
     }
     return (
-
+      <StyleRoot>
       <div className="App">
         <h1> Hi i am a react app </h1>
         <p className ={classes.join(' ')} > this is relly working </p>
-        <button style={style} onClick = { this.showPersonHandler}> Switch name </button>
+        <button className={class} onClick = { this.showPersonHandler}> Switch name </button>
         {persons}
       </div>
+      </StyleRoot>
     );
   }
 }
 
-export default App;
+export default Radium(App);
